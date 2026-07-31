@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skincare Quiz | Find Your Perfect Routine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="quiz-page">
+    <header class="quiz-header">
+      <div class="quiz-header-inner">
+        <span class="quiz-logo">GlowLab</span>
+        <span class="quiz-step-label" id="stepLabel">Step 1 of 8</span>
+      </div>
+      <div class="progress-bar" role="progressbar" aria-valuemin="1" aria-valuemax="8" aria-valuenow="1" id="progressBar">
+        <div class="progress-bar-fill" id="progressBarFill"></div>
+      </div>
+    </header>
+
+    <main class="quiz-main">
+      <div class="quiz-card" id="quizCard">
+        <div class="quiz-intro" id="quizIntro">
+          <p class="quiz-eyebrow">Personalized Skincare</p>
+          <h1 class="quiz-title">Discover Your Ideal Skincare Routine</h1>
+          <p class="quiz-description">Take 8 quick steps so we can recommend products tailored to your skin type, concerns, and goals.</p>
+          <button type="button" class="quiz-button quiz-button-primary" id="startQuizButton">Start the Quiz</button>
+        </div>
+
+        <form class="quiz-form" id="quizForm" hidden>
+          <div class="quiz-question" data-step="1">
+            <h2 class="question-title">What is your skin type?</h2>
+            <p class="question-subtitle">Choose the option that best describes your skin on most days.</p>
+            <div class="option-list">
+              <label class="option-card">
+                <input type="radio" name="skinType" value="dry" required>
+                <span class="option-card-content">
+                  <span class="option-card-label">Dry</span>
+                  <span class="option-card-description">Feels tight, flaky, or rough</span>
+                </span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="skinType" value="oily">
+                <span class="option-card-content">
+                  <span class="option-card-label">Oily</span>
+                  <span class="option-card-description">Shiny, especially in the T-zone</span>
+                </span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="skinType" value="combination">
+                <span class="option-card-content">
+                  <span class="option-card-label">Combination</span>
+                  <span class="option-card-description">Oily in some areas, dry in others</span>
+                </span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="skinType" value="normal">
+                <span class="option-card-content">
+                  <span class="option-card-label">Normal</span>
+                  <span class="option-card-description">Balanced, not too oily or dry</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="quiz-question" data-step="2" hidden>
+            <h2 class="question-title">What is your primary skin concern?</h2>
+            <p class="question-subtitle">Select the concern you want to address first.</p>
+            <div class="option-list">
+              <label class="option-card">
+                <input type="radio" name="skinConcern" value="acne" required>
+                <span class="option-card-content">
+                  <span class="option-card-label">Acne &amp; Breakouts</span>
+                  <span class="option-card-description">Blemishes, clogged pores, or frequent breakouts</span>
+                </span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="skinConcern" value="aging">
+                <span class="option-card-content">
+                  <span class="option-card-label">Fine Lines &amp; Aging</span>
+                  <span class="option-card-description">Wrinkles, loss of firmness, or dullness</span>
+                </span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="skinConcern" value="dark-spots">
+                <span class="option-card-content">
+                  <span class="option-card-label">Dark Spots &amp; Uneven Tone</span>
+                  <span class="option-card-description">Hyperpigmentation or uneven complexion</span>
+                </span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="skinConcern" value="redness">
+                <span class="option-card-content">
+                  <span class="option-card-label">Redness &amp; Sensitivity</span>
+                  <span class="option-card-description">Irritation, rosacea, or reactive skin</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="quiz-question" data-step="3" hidden>
+            <h2 class="question-title">How would you describe your age range?</h2>
+            <p class="question-subtitle">This helps us tailor ingredient recommendations.</p>
+            <div class="option-list">
+              <label class="option-card">
+                <input type="radio" name="ageRange" value="under-25" required>
+                <span class="option-card-content">
+                  <span class="option-card-label">Under 25</span>
+                </span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="ageRange" value="25-34">
+                <span class="option-card-content">
+                  <span class="option-card-label">25 – 34</span>
+                </span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="ageRange" value="35-44">
+                <span class="option-card-content">
+                  <span class="option-card-label">35 – 44</span>
+                </span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="ageRange" value="45-plus">
+                <span class="option-card-content">
+                  <span class="option-card-label">45+</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="quiz-question" data-step="4" hidden>
+            <h2 class="question-title">What does your current skincare routine look like?</h2>
+            <p class="question-subtitle">Be honest — there are no wrong answers.</p>
+            <div class="option-list">
+              <label class="option-card">
+                <input type="radio" name="currentRoutine" value="minimal" required>
+                <span class="option-card-content">
+                  <span class="option-card-label">Minimal</span>
+                  <span class="option-card-description">Cleanser and moisturizer only</span>
+                </span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="currentRoutine" value="basic">
+                <span class="option-card-content">
+                  <span class="option-card-label">Basic</span>
+                  <span class="option-card-description">Cleanse, treat, moisturize, SPF</span>
+                </span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="currentRoutine" value="advanced">
+                <span class="option-card-content">
+                  <span class="option-card-label">Advanced</span>
+                  <span class="option-card-description">Serums, actives, and targeted treatments</span>
+                </span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="currentRoutine" value="none">
+                <span class="option-card-content">
+                  <span class="option-card-label">No Routine Yet</span>
+                  <span class="option-card-description">Just getting started</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="quiz-question" data-step="5" hidden>
+            <h2 class="question-title">How much sun exposure do you get daily?</h2>
+            <p class="question-subtitle">Sun exposure affects hydration, pigmentation, and aging.</p>
+            <div class="option-list">
+              <label class="option-card">
+                <input type="radio" name="sunExposure" value="minimal" required>
+                <span class="option-card-content">
+                  <span class="option-card-label">Minimal</span>
+                  <span class="option-card-description">Mostly indoors</span>
+                </span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="sunExposure" value="moderate">
+                <span class="option-card-content">
+                  <span class="option-card-label">Moderate</span>
+                  <span class="option-card-description">Some outdoor time each day</span>
+                </span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="sunExposure" value="high">
+                <span class="option-card-content">
+                  <span class="option-card-label">High</span>
+                  <span class="option-card-description">Frequent outdoor activities</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="quiz-question" data-step="6" hidden>
+            <h2 class="question-title">How sensitive is your skin?</h2>
+            <p class="question-subtitle">Think about how your skin reacts to new products.</p>
+            <div class="option-list">
+              <label class="option-card">
+                <input type="radio" name="skinSensitivity" value="not-sensitive" required>
+                <span class="option-card-content">
+                  <span class="option-card-label">Not Sensitive</span>
+                  <span class="option-card-description">Rarely reacts to products</span>
+                </span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="skinSensitivity" value="somewhat-sensitive">
+                <span class="option-card-content">
+                  <span class="option-card-label">Somewhat Sensitive</span>
+                  <span class="option-card-description">Occasional redness or stinging</span>
+                </span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="skinSensitivity" value="very-sensitive">
+                <span class="option-card-content">
+                  <span class="option-card-label">Very Sensitive</span>
+                  <span class="option-card-description">Reacts easily to most products</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="quiz-question" data-step="7" hidden>
+            <h2 class="question-title">What is your top skincare goal?</h2>
+            <p class="question-subtitle">Pick the result that matters most to you right now.</p>
+            <div class="option-list">
+              <label class="option-card">
+                <input type="radio" name="skincareGoal" value="clear-skin" required>
+                <span class="option-card-content">
+                  <span class="option-card-label">Clear, Blemish-Free Skin</span>
+                </span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="skincareGoal" value="hydration">
+                <span class="option-card-content">
+                  <span class="option-card-label">Deep Hydration &amp; Glow</span>
+                </span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="skincareGoal" value="anti-aging">
+                <span class="option-card-content">
+                  <span class="option-card-label">Youthful, Firm Skin</span>
+                </span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="skincareGoal" value="even-tone">
+                <span class="option-card-content">
+                  <span class="option-card-label">Even Tone &amp; Radiance</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="quiz-question quiz-contact-step" data-step="8" hidden>
+            <h2 class="question-title">Almost done! Where should we send your results?</h2>
+            <p class="question-subtitle">Enter your details to unlock your personalized skincare recommendation.</p>
+            <div class="contact-fields">
+              <div class="form-field">
+                <label class="form-label" for="firstName">First Name</label>
+                <input class="form-input" type="text" id="firstName" name="firstName" autocomplete="given-name" placeholder="Jane" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="email">Email Address</label>
+                <input class="form-input" type="email" id="email" name="email" autocomplete="email" placeholder="jane@example.com" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="phone">Phone Number</label>
+                <input class="form-input" type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(555) 123-4567" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="quiz-actions">
+            <button type="button" class="quiz-button quiz-button-secondary" id="backButton" hidden>Back</button>
+            <button type="button" class="quiz-button quiz-button-primary" id="nextButton">Continue</button>
+          </div>
+        </form>
+
+        <div class="quiz-complete" id="quizComplete" hidden>
+          <p class="quiz-eyebrow">Your Results Are Ready</p>
+          <h2 class="quiz-title">We found the perfect match for your skin</h2>
+          <p class="quiz-description">Based on your answers, we recommend a routine designed to support your skin goals from the inside out.</p>
+          <a class="quiz-button quiz-button-primary quiz-button-link" id="resultsButton" href="https://ledisa.com/products/glp-1">View My Recommendation</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/quiz.js"></script>
+</body>
+</html>
