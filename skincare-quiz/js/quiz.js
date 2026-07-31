@@ -111,6 +111,33 @@
     });
   }
 
+  function setSubmitting(isSubmitting) {
+    nextButton.disabled = isSubmitting;
+    backButton.disabled = isSubmitting;
+    nextButton.textContent = isSubmitting ? "Submitting..." : (currentStep === totalSteps ? "See My Results" : "Continue");
+    nextButton.classList.toggle("is-loading", isSubmitting);
+  }
+
+  function showSubmitError(message) {
+    clearSubmitError();
+
+    const errorElement = document.createElement("p");
+    errorElement.className = "quiz-submit-error";
+    errorElement.setAttribute("role", "alert");
+    errorElement.textContent = message;
+
+    const quizActions = document.querySelector(".quiz-actions");
+    quizActions.parentElement.insertBefore(errorElement, quizActions);
+  }
+
+  function clearSubmitError() {
+    const existingError = document.querySelector(".quiz-submit-error");
+
+    if (existingError) {
+      existingError.remove();
+    }
+  }
+
   function fireStepTracking(step) {
     if (!window.quizTracking) {
       return;
@@ -138,7 +165,7 @@
     showQuestion(currentStep);
   }
 
-  function goToNextStep() {
+  async function goToNextStep() {
     if (!validateCurrentStep()) {
       if (currentStep < totalSteps) {
         highlightMissingSelection();
@@ -146,13 +173,29 @@
       return;
     }
 
-    fireStepTracking(currentStep);
+    clearSubmitError();
 
     if (currentStep === totalSteps) {
-      showCompleteScreen();
+      setSubmitting(true);
+
+      try {
+        fireStepTracking(currentStep);
+
+        if (window.quizKlaviyo) {
+          await window.quizKlaviyo.subscribe();
+        }
+
+        showCompleteScreen();
+      } catch (error) {
+        showSubmitError(error.message || "Something went wrong. Please try again.");
+      } finally {
+        setSubmitting(false);
+      }
+
       return;
     }
 
+    fireStepTracking(currentStep);
     currentStep += 1;
     showQuestion(currentStep);
   }

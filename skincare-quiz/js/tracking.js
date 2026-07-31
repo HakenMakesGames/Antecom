@@ -103,6 +103,7 @@
 
   window.quizTracking = {
     fireStepEvent: fireGtmStepEvent,
-    fireLeadEvent: fireMetaLeadEvent
+    fireLeadEvent: fireMetaLeadEvent,
+    getQuizData: collectQuizData
   };
 })();
