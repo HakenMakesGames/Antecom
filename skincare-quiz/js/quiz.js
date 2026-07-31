@@ -111,6 +111,18 @@
     });
   }
 
+  function fireStepTracking(step) {
+    if (!window.quizTracking) {
+      return;
+    }
+
+    window.quizTracking.fireStepEvent(step);
+
+    if (step === totalSteps) {
+      window.quizTracking.fireLeadEvent();
+    }
+  }
+
   function showCompleteScreen() {
     quizForm.hidden = true;
     quizComplete.hidden = false;
@@ -133,6 +145,8 @@
       }
       return;
     }
+
+    fireStepTracking(currentStep);
 
     if (currentStep === totalSteps) {
       showCompleteScreen();
